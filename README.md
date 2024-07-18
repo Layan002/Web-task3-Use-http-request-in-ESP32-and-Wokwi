@@ -29,35 +29,51 @@ print(data)
 import requests
 ```
 - This library is important to get the request to any url on the internet.
+----------------------------------------------------------------
 ```
 response= requests.get("https://s-m.com.sa/f.html")
 print(response)
 ```
 - I get the response to the url by using 'get()' method and get the output as 'response'.
 - this will output:
-``` output
+``` OUTPUT
+output:
+
 <Response [200]>
 ```
 - [200] or 2XX means it sucsees, if it was 4XX (eg.404) it means that it is failed.
 
+--------------------------------------------------------------
+
 ```
 response.raise_for_status()
 ```
-- This to show the reason of any potential error if occurs.
+- This to show the reason of any potential error if it occurs.
+------------------------------------------------------------------
+
 ```
 type1= response.headers['content-type']
 
 print(type1)
 ```
 - This step is not important if you know the content website type. I didn't know how to fetch the content because I dont know the type, so I use the above step and it succeded. Therefore, the type was a text.
+``` OUTPUT
+Output:
+
+text/html
+```
+---------------------------------------------------------------------
 
 ```
 data = response.text
 
 print(data)
 ```
-- As I mentioned before, I used response.text because the data I have is a "text". the output is: "forward" as the content of [https://s-m.com.sa/f.html](https://s-m.com.sa/f.html).
+- As I mentioned before, I used response.text because the data I have is a "text".
+- the output is: "forward" as the content of [https://s-m.com.sa/f.html](https://s-m.com.sa/f.html).
 ``` output
+Output:
+
 forward
 ```
 
