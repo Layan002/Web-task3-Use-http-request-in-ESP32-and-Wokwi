@@ -5,7 +5,7 @@
 The library of curlpp is a C++ wrapper library for libcurl, which is a widely used library for transferring data with URLs. libcurl provides support for various protocols such as HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, LDAP, and others. curlpp simplifies the use of libcurl in C++ by providing an object-oriented interface that makes it easier to perform tasks such as making HTTP requests.
 
 # Using previous knowledge
-I am learning **python** with 'Angela Yu' on Udemy website, taking a bootcamb on it [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/?couponCode=MCLARENT71824). I've learnt about APIs and how it works. So, I tried what I've learnt to fetch the value of 'forward' from this website: [https://s-m.com.sa/f.html](https://s-m.com.sa/f.html). 
+I am learning **python** with 'Angela Yu' on Udemy website- I've finished 33 days unlit now!-, taking a bootcamb on it [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/?couponCode=MCLARENT71824). On day 33, I've learnt about APIs and how it works. So, I tried what I've learnt to fetch the value of 'forward' from this website: [https://s-m.com.sa/f.html](https://s-m.com.sa/f.html). 
 
 ``` python
 import requests
