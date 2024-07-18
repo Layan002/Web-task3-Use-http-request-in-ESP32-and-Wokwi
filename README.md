@@ -77,9 +77,11 @@ Output:
 forward
 ```
 
+----------------------------------------
+
 That is it!
 
-Know I will try to apply this knowledge with C++ language and ESP32. 
+Now, I will try to apply this knowledge with C++ language and ESP32. 
 
 
 
