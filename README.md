@@ -48,7 +48,7 @@ output:
 ```
 response.raise_for_status()
 ```
-- This to show the reason of any potential error if it occurs.
+- This is to show the reason of any potential error if it occurs.
 ------------------------------------------------------------------
 
 ```
