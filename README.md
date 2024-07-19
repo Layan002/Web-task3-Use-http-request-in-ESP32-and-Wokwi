@@ -326,6 +326,7 @@ void connectWiFi() {
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 }
+--------------------------------------------------------
 ```
 - The libraries I've used are:
 ```
@@ -454,20 +455,92 @@ else {
     Serial.println("Unable to connect to server for URL_S");
   }
 ```
-- if (http_S.begin(URL_S)) { initializes the HTTP client with the specified URL. Returns true (non-zero value): If the initialization is successful and the HTTP client is ready to make requests to the URL. This means that the URL is valid, and the HTTP client has been set up correctly.
-- Returns false (zero value): If there is an issue initializing the HTTP connection. This could happen due to an invalid URL, network issues, or problems setting up the HTTP client. and then will get to the else statement printing: "Unable to connect to server for URL_S"
-- int httpResponseCode_S = http_S.GET(); sends a GET request to the URL and stores the HTTP response code (if it is 200 "2XX" it is succesded if it is something else, then there is an error.
+- if (http_S.begin(URL_S)) { initializes the HTTP client with the specified URL. Returns true (non-zero value): If the initialization is successful and the HTTP client is ready to make requests to the URL. This means that the URL is valid, and the HTTP client has been set up correctly. Thus it will go into the follwing if statement
+```
+if (httpResponseCode_S > 0) {
+      String payload_S = http_S.getString();
+      Serial.print("Response payload S: ");
+      Serial.println(payload_S);
+
+      if (payload_S == "stop") {
+        Serial.println("Turning on LED Stop");
+        digitalWrite(ledPin_S, HIGH);
+        delay(2000);
+      }
+    } else {
+      Serial.print("Error on HTTP request S: ");
+      Serial.println(httpResponseCode_S);
+    }
+
+    http_S.end();
+  }
+```
+- Returns false (zero value): If there is an issue initializing the HTTP connection. This could happen due to an invalid URL, network issues, or problems setting up the HTTP client. and then will get to the else statement:
+```
+else {
+    Serial.println("Unable to connect to server for URL_S");
+  }
+```
+ printing: "Unable to connect to server for URL_S" <br>
+ 
+- int httpResponseCode_S = http_S.GET(); sends a GET request to the URL and stores the HTTP response code (if it is 200 "2XX" it is succesded and will get into (httpResponseCode_S > 0) if it is something else, then there is an error. and will excute  Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S);
+```
+if (httpResponseCode_S > 0) {
+      String payload_S = http_S.getString();
+      Serial.print("Response payload S: ");
+      Serial.println(payload_S);
+
+      if (payload_S == "stop") {
+        Serial.println("Turning on LED Stop");
+        digitalWrite(ledPin_S, HIGH);
+        delay(2000);
+      }
+    } else {
+      Serial.print("Error on HTTP request S: ");
+      Serial.println(httpResponseCode_S);
+    }
+```
+- String payload_S = http_S.getString(); retrieves the response payload as a String, which is here "stop".
+- Serial.print("Response payload S: "); prints a label for the response payload to ensure that the logic of c++ got into this if statement..
+- Serial.println(payload_S); prints the actual response payload to make sure it is "stop" as what we expected.
+```
+if (payload_S == "stop") {
+        Serial.println("Turning on LED Stop");
+        digitalWrite(ledPin_S, HIGH);
+        delay(2000);
+      }
+```
+- if (payload_S == "stop") { checks if the payload matches the string "stop". if it matches it will print: "Turning on LED Stop" this will make use sure that if statement here is excuted and prints a message indicating that the LED will be turned on.
+- digitalWrite(ledPin_S, HIGH); turns on the LED by setting the pin to HIGH.
+- delay(2000); waits for 2 seconds.<br>
+```
+else {
+      Serial.print("Error on HTTP request S: ");
+      Serial.println(httpResponseCode_S);
+    }
+```
+- else { Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S); } prints an error message if the HTTP request failed.
+```
+ http_S.end();
+```
+- http_S.end(); ends the HTTP request and frees resources.
 ------------------------------------------------------------------------------------------------------
-String payload_S = http_S.getString(); retrieves the response payload as a String.
-Serial.print("Response payload S: "); prints a label for the response payload.
-Serial.println(payload_S); prints the actual response payload.
-if (payload_S == "stop") { checks if the payload matches the string "stop".
-Serial.println("Turning on LED Stop"); prints a message indicating that the LED will be turned on.
-digitalWrite(ledPin_S, HIGH); turns on the LED by setting the pin to HIGH.
-delay(2000); waits for 2 seconds.
-else { Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S); } prints an error message if the HTTP request failed.
-http_S.end(); ends the HTTP request and frees resources.
-digitalWrite(ledPin_S, LOW); turns off the LED by setting the pin to LOW.
-delay(500); waits for 500 milliseconds before repeating the loop.
+Then it will get out from the if statement of if if (httpResponseCode_S > 0), going to face each of:
+```
+digitalWrite(ledPin_S, LOW);
+
+delay(500);
+```
+- digitalWrite(ledPin_S, LOW); turns off the LED by setting the pin to LOW. I did this because the loop will be repeated and I want the white LED to turn off before checkeing the if statement of (httpResponseCode_S > 0) and turning on again. 
+- delay(500); waits for 500 milliseconds before repeating the loop.
+
+-----------------------------------------------------------------
+I hope that everything is clear for now.
+Finally, after succeeding on this I will try to convert my localhost web to URL in order to upply this knowledge on [task1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) & [task2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md)
+
+-------------------------------------------------------------------
+-----------------------------------------------------------------------
+
+
 
 
