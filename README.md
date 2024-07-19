@@ -91,6 +91,11 @@ Now, I will try to apply this knowledge with C++ language and ESP32.
 # Applyin on Wokwi
 I've used the following code and it was the final one after facing so many problems but I've succeded in troubilshooting it.<br> 
 
+## Simulation Video
+https://github.com/user-attachments/assets/935d7568-7be8-4381-9dc3-84f47ed19564
+
+
+
 ## Final Circuit Simulation
 <img src= "https://github.com/user-attachments/assets/5919da81-f8ca-4568-8430-5ad5179562f7" alt= "img" width= 700>
 
