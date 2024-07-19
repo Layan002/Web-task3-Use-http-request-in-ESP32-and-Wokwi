@@ -230,6 +230,9 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 ```
+> [!NOTE]
+> There is a limitation in HTTPClient library since it can't take more than 4 URLs at the same time. This is the reoson behind why I did not include this URL: ["https://s-m.com.sa/l.htm"l](https://s-m.com.sa/l.html) which is responsible about the stop movemen, but I will use it in explination to improve that it works well individually without facing any problem 👍.
+
 ### Explination:
 Let's break it down to one LED To understnd the concept and make everything clear:
 
@@ -317,13 +320,13 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 ```
-- The library I've used are:
+- The libraries I've used are:
 ```
 #include <HTTPClient.h>
 #include <WiFi.h>
 ```
 - HTTPClient.h is the library that is responsible about requesting the website and getting the text from it.
-- WiFi.h is the library for the ESP32 that is reponsible about making connections between both ESP32 and the WiFi initiallizing hotspot
+- WiFi.h is the library for the ESP32 that is reponsible about making connections between both ESP32 and the WiFi, in another word, initiallizing 'hotspot'.
 
 
 
