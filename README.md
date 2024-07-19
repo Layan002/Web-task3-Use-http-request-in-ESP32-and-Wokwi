@@ -1,6 +1,9 @@
 > [!NOTE]
 > This task combines Two previous tasks: [Designing a web control panal for robot and saving it in database](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database	), and [Designing another web to save the last value from task1](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md)
 
+------------------------------------------------
+-------------------------------------------------
+
 
 # Using previous knowledge
 I am learning **python** with 'Angela Yu' on Udemy website- I've finished 33 days unlit now!-, taking a bootcamb on it [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/?couponCode=MCLARENT71824). On day 33, I've learnt about APIs and how it works. So, I tried what I've learnt to fetch the value of 'forward' from this website: [https://s-m.com.sa/f.html](https://s-m.com.sa/f.html). 
@@ -80,6 +83,10 @@ forward
 That is it!
 
 Now, I will try to apply this knowledge with C++ language and ESP32. 
+
+
+------------------------------------------------
+-------------------------------------------------
 
 # Applyin on Wokwi
 I've used the following code and it was the final one after facing so many problems but I've succeded in troubilshooting it.<br> 
