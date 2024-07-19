@@ -327,6 +327,140 @@ void connectWiFi() {
 ```
 - HTTPClient.h is the library that is responsible about requesting the website and getting the text from it.
 - WiFi.h is the library for the ESP32 that is reponsible about making connections between both ESP32 and the WiFi, in another word, initiallizing 'hotspot'.
+------------------------------------------------------------
+```
+String URL_S = "https://s-m.com.sa/s.html";
+```
+- Defines a String variable URL_S that holds the URL you will be sending an HTTP request to.
+----------------------------------------------------------
+```
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
+```
+- Defines the WiFi SSID and password for connecting to the network. The const char* type is used for string literals.
+- Wokwi simulator uses each of "Wokwi-GUEST" ssid and no password (As what they mentioned me when I have trouble with wifi connection).
+--------------------------------------------------------------
+```
+const int ledPin_S = 17;
+```
+- Defines a constant integer ledPin_S representing the GPIO pin number (17) to which the LED is connected.
+--------------------------------------------------------------
+```
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Setup started...");
+  connectWiFi();
+  pinMode(ledPin_S, OUTPUT);
+  digitalWrite(ledPin_S, LOW);
+}
+```
+- Serial.begin(115200); initializes serial communication at a baud rate of 115200.
+- Serial.println("Setup started..."); prints a message indicating that the setup phase has started.
+- connectWiFi(); calls a function to connect to the WiFi network, it is strongly recommended to use in every ESP32 project in setup and loop. I will explain it in loop section in detalis. 
+- pinMode(ledPin_S, OUTPUT); sets the LED pin as an output. If you don't do this command, it won't turn on because the default mode is INPUT. 
+- digitalWrite(ledPin_S, LOW); ensures that the LED is off initially by setting the pin to LOW. If it is "HIGH" the led will be turned on.
+-------------------------------------------------------------------------
+Now I will break down the void loop(), and explain every line in it:
+```
+void loop() {
+  if (WiFi.status() != WL_CONNECTED) {
+    connectWiFi();
+  }
 
+  Serial.println("Loop started...");
+
+  HTTPClient http_S;
+
+  if (http_S.begin(URL_S)) {
+    int httpResponseCode_S = http_S.GET();
+
+    if (httpResponseCode_S > 0) {
+      String payload_S = http_S.getString();
+      Serial.print("Response payload S: ");
+      Serial.println(payload_S);
+
+      if (payload_S == "stop") {
+        Serial.println("Turning on LED Stop");
+        digitalWrite(ledPin_S, HIGH);
+        delay(2000);
+      }
+    } else {
+      Serial.print("Error on HTTP request S: ");
+      Serial.println(httpResponseCode_S);
+    }
+
+    http_S.end();
+  } else {
+    Serial.println("Unable to connect to server for URL_S");
+  }
+
+  digitalWrite(ledPin_S, LOW);
+
+  delay(500);
+}
+```
+----------------------------------------------
+```
+  if (WiFi.status() != WL_CONNECTED) {
+    connectWiFi();
+  }
+```
+- 'if' (WiFi.status() != WL_CONNECTED) { connectWiFi(); } checks if the device is connected to WiFi; if not, it tries to reconnect. By colling this function: connectWiFi(), then it will goes to: 
+```
+void connectWiFi() {
+  WiFi.mode(WIFI_OFF);
+  delay(1000);
+  WiFi.mode(WIFI_STA);
+
+  WiFi.begin(ssid, password);
+  Serial.println("Connecting to WiFi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.print("Connected to: ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+```
+This will make it reconnect the wifi if something went wrong. 
+-------------------------------------------------------------
+```
+Serial.println("Loop started...");
+```
+- Serial.println("Loop started..."); prints a message indicating that the main loop has started. If it is not printed, this means that the connection to the internet was failed.
+----------------------------------------------------------------
+```
+HTTPClient http_S;
+```
+- HTTPClient http_S; creates an HTTPClient object for making HTTP requests.
+-------------------------------------------------------------------
+```
+if (http_S.begin(URL_S)) {
+    int httpResponseCode_S = http_S.GET();
+    // If's statements, but I didn't write it to make the wxplination clear!!
+}
+else {
+    Serial.println("Unable to connect to server for URL_S");
+  }
+```
+- if (http_S.begin(URL_S)) { initializes the HTTP client with the specified URL. Returns true (non-zero value): If the initialization is successful and the HTTP client is ready to make requests to the URL. This means that the URL is valid, and the HTTP client has been set up correctly.
+- Returns false (zero value): If there is an issue initializing the HTTP connection. This could happen due to an invalid URL, network issues, or problems setting up the HTTP client. and then will get to the else statement printing: "Unable to connect to server for URL_S"
+- int httpResponseCode_S = http_S.GET(); sends a GET request to the URL and stores the HTTP response code (if it is 200 "2XX" it is succesded if it is something else, then there is an error.
+------------------------------------------------------------------------------------------------------
+String payload_S = http_S.getString(); retrieves the response payload as a String.
+Serial.print("Response payload S: "); prints a label for the response payload.
+Serial.println(payload_S); prints the actual response payload.
+if (payload_S == "stop") { checks if the payload matches the string "stop".
+Serial.println("Turning on LED Stop"); prints a message indicating that the LED will be turned on.
+digitalWrite(ledPin_S, HIGH); turns on the LED by setting the pin to HIGH.
+delay(2000); waits for 2 seconds.
+else { Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S); } prints an error message if the HTTP request failed.
+http_S.end(); ends the HTTP request and frees resources.
+digitalWrite(ledPin_S, LOW); turns off the LED by setting the pin to LOW.
+delay(500); waits for 500 milliseconds before repeating the loop.
 
 
