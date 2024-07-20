@@ -541,10 +541,6 @@ delay(500);
 
 -----------------------------------------------------------------
 I hope that everything is clear for now.<br>
-Finally, after succeeding on this I will try to convert my localhost web to URL in order to upply this knowledge on [task1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) & [task2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md)
-
--------------------------------------------------------------------
------------------------------------------------------------------------
 
 
 
