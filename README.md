@@ -552,7 +552,7 @@ The code is excatly the same but this time I've changed the Wifi ssid and passwo
 then pasete it as what I will show you here: <br>
 
 
-```
+``` CPP
 #include <HTTPClient.h>
 #include <WiFi.h>
 
@@ -708,7 +708,7 @@ open the cmd -> ipconfig -> IPv4 Address
 ```
 
 The cose is: 
-```
+``` CPP
 #include <HTTPClient.h>
 #include <WiFi.h>
 #include <ArduinoJson.h> // Include this library
