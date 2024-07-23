@@ -543,9 +543,9 @@ delay(500);
 I hope that everything is clear for now.<br>
 
 # Arduino IDE
-I've used to method to contro the leds here; 
-- The first one depends on the wokwi simulation.
-- The second one by the web page that I have created for [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) & [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) of the web page
+I've used two method to contro the leds here; 
+- The first one depends on the wokwi simulator. (You can fin the code in the file named "ESP32_ArduinoIDE_LOOP.ino").
+- The second one by the web page that I have created for [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) & [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) of the web page (You can fin the code in the file named "ESP32_ArduinoIDE_web_page.ino").
 
 ## Testing on Arduino IDE for Wokwi code:
 The code is excatly the same but this time I've changed the Wifi ssid and password to the one that I am using.
