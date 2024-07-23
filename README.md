@@ -696,6 +696,8 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 ```
+### Video Testing
+
 
 
 
@@ -829,6 +831,6 @@ void connectWiFi() {
 }
 ```
 >[!NOTE]
-> This process are depending on the web page I've created so I will insert the file in the reo, they are: "index.html", "send_last_movement.php", "last_movement.html", and "fetch_last_movement.php".
-> Don't forget to start mysql and apache on xampp before getting starting with the project. You can find the steps in [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) and [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) for more detail if you are not familiar with this process.
+> This process are depending on the web page I've created so I will insert the file in the repo, they are: "index.html", "send_last_movement.php", "last_movement.html", and "fetch_last_movement.php".
+> Don't forget to start mysql and apache on xampp before getting starting with the project. You can find the steps in [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) and [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) for more details if you are not familiar with this process.
 
