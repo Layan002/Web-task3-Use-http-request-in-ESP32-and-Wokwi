@@ -696,7 +696,16 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 ```
-### Video Testing
+### Testing Video 
+
+
+
+https://github.com/user-attachments/assets/2bacfcbd-50ba-4af2-b697-fa678667e005
+
+
+
+
+
 
 
 
@@ -831,6 +840,12 @@ void connectWiFi() {
 }
 ```
 >[!NOTE]
-> This process are depending on the web page I've created so I will insert the file in the repo, they are: "index.html", "send_last_movement.php", "last_movement.html", and "fetch_last_movement.php".
-> Don't forget to start mysql and apache on xampp before getting starting with the project. You can find the steps in [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) and [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) for more details if you are not familiar with this process.
+> This process are depending on the web page I've created so I will insert the file in the repo, they are: "index.html", "styles.css", "send_last_movement.php", "last_movement.html", and "fetch_last_movement.php". put them all inside "robot-move" folder in this path on your computer: C:\xampp\htdocs\robot-move
+> Don't forget to start mysql and apache on xampp before getting starting with the project. In addition creating a database table in mysql. You can find the steps in [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) and [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) for more details if you are not familiar with this process.
+
+### Testing Video 
+
+
+https://github.com/user-attachments/assets/ccd4187d-76c2-4387-b198-9aa8d2a4ecdb
+
 
