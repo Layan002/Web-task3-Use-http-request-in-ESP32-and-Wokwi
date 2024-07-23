@@ -843,6 +843,9 @@ void connectWiFi() {
 > This process are depending on the web page I've created so I will insert the file in the repo, they are: "index.html", "styles.css", "send_last_movement.php", "last_movement.html", and "fetch_last_movement.php". put them all inside "robot-move" folder in this path on your computer: C:\xampp\htdocs\robot-move
 > Don't forget to start mysql and apache on xampp before getting starting with the project. In addition creating a database table in mysql. You can find these steps in [task 1](https://github.com/Layan002/Web-Task1-designing-a-web-saving-it-with-database) and [task 2](https://github.com/Layan002/Web-Task2-Take-the-last-data-to-new-web-page/blob/main/README.md) for more details if you are not familiar with this process.
 
+> [!CAUTION]
+> THe web pages have been changed and updated in this task so I dont recommend you to use old one, instead, use the files I've uploaded in this repo. 
+
 ### Testing Video 
 
 
