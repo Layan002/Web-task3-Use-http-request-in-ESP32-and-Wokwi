@@ -1,0 +1,78 @@
+/* Your existing styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body,
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Add position relative to parent */
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 400px;
+}
+.rectangle {
+    width: 220px;
+    height: 100px;
+    background-color: rgb(40, 163, 179);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 40px;
+    border: 2px solid rgb(22, 117, 130);
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 40px;
+    transition: transform 0.1s, background-color 0.1s;
+}
+.rectangle:hover,
+.rectangle.active {
+    transform: scale(0.95);
+    background-color: rgb(30, 143, 159);
+}
+.forward,
+.backward {
+    height: 25%;
+}
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex: 1;
+}
+.left,
+.center,
+.right {
+    flex: 1;
+    margin: 0 10px;
+}
+.center {
+    background-color: rgb(23, 42, 62);
+    border: 2px solid rgb(11, 4, 63);
+}
+.last-movement {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: rgb(40, 163, 179);
+    background-color: white;
+    padding: 5px 10px;
+    border: 2px solid rgb(22, 117, 130);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

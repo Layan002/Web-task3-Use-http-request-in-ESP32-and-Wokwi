@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="description" content="Controlling the movements of the robot" />
+    <title>Controlling the robot movement</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      function sendMovement(direction, element) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "send_movement.php", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.status === "success") {
+              // Update last movement display
+              document.getElementById("last-movement").innerText =
+                "Last Movement: " + direction;
+            } else {
+              console.error("Error:", response.message);
+            }
+          }
+        };
+        xhr.send("direction=" + direction);
+
+        element.classList.add("active");
+        setTimeout(function () {
+          element.classList.remove("active");
+        }, 200);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle forward" onclick="sendMovement('forward', this)">
+        Forward
+      </div>
+      <div class="middle">
+        <div class="rectangle left" onclick="sendMovement('left', this)">
+          Left
+        </div>
+        <div class="rectangle center" onclick="sendMovement('stop', this)">
+          Stop
+        </div>
+        <div class="rectangle right" onclick="sendMovement('right', this)">
+          Right
+        </div>
+      </div>
+      <div class="rectangle backward" onclick="sendMovement('backward', this)">
+        Backward
+      </div>
+    </div>
+    <div id="last-movement" class="last-movement">Last Movement: None</div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Last Movement Display</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .last-movement {
+        font-size: 24px;
+        color: #333;
+      }
+    </style>
+    <script>
+      function fetchLastMovement() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "fetch_last_movement.php", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("HTTP request successful");
+            var response = JSON.parse(xhr.responseText);
+            if (response.status === "success") {
+              document.getElementById("last-movement").innerText =
+                response.direction;
+            } else {
+              console.error("Error:", response.message);
+              document.getElementById("last-movement").innerText =
+                "Error fetching data.";
+            }
+          }
+        };
+        xhr.send();
+      }
+
+      window.onload = function () {
+        fetchLastMovement();
+      };
+    </script>
+  </head>
+  <body>
+    <div id="last-movement" class="last-movement">Loading...</div>
+  </body>
+</html>
