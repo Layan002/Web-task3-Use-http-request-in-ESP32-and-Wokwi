@@ -26,12 +26,12 @@ data = response.text
 print(data)
 ```
 ## Explinations:
-```
+``` PYTHON
 import requests
 ```
 - This library is important to get the request to any url on the internet.
 ----------------------------------------------------------------
-```
+``` PYTHON
 response= requests.get("https://s-m.com.sa/f.html")
 print(response)
 ```
@@ -41,18 +41,18 @@ print(response)
 output:
 
 <Response [200]>
-```
+``` 
 - [200] or 2XX means it sucsees, if it was 4XX (eg.404) it means that it is failed.
 
 --------------------------------------------------------------
 
-```
+``` PYTHON
 response.raise_for_status()
 ```
 - This is to show the reason of any potential error if it occurs.
 ------------------------------------------------------------------
 
-```
+``` PYTHON
 type1= response.headers['content-type']
 
 print(type1)
@@ -64,8 +64,8 @@ Output:
 text/html
 ```
 ---------------------------------------------------------------------
-
-```
+ 
+``` PYTHON
 data = response.text
 
 print(data)
@@ -334,31 +334,31 @@ void connectWiFi() {
 --------------------------------------------------------
 ```
 - The libraries I've used are:
-```
+``` CPP
 #include <HTTPClient.h>
 #include <WiFi.h>
 ```
 - HTTPClient.h is the library that is responsible about requesting the website and getting the text from it.
 - WiFi.h is the library for the ESP32 that is reponsible about making connections between both ESP32 and the WiFi, in another word, initiallizing 'hotspot'.
 ------------------------------------------------------------
-```
+``` CPP
 String URL_S = "https://s-m.com.sa/s.html";
 ```
 - Defines a String variable URL_S that holds the URL you will be sending an HTTP request to.
 ----------------------------------------------------------
-```
+``` CPP
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 ```
 - Defines the WiFi SSID and password for connecting to the network. The const char* type is used for string literals.
 - Wokwi simulator uses each of "Wokwi-GUEST" ssid and no password (As what they mentioned me when I have trouble with wifi connection).
 --------------------------------------------------------------
-```
+``` CPP
 const int ledPin_S = 17;
 ```
 - Defines a constant integer ledPin_S representing the GPIO pin number (17) to which the LED is connected.
 --------------------------------------------------------------
-```
+``` CPP
 void setup() {
   Serial.begin(115200);
   Serial.println("Setup started...");
@@ -374,7 +374,7 @@ void setup() {
 - digitalWrite(ledPin_S, LOW); ensures that the LED is off initially by setting the pin to LOW. If it is "HIGH" the led will be turned on.
 -------------------------------------------------------------------------
 Now I will break down the void loop(), and explain every line in it:
-```
+``` CPP
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
     connectWiFi();
@@ -413,13 +413,13 @@ void loop() {
 }
 ```
 ----------------------------------------------
-```
+``` CPP
   if (WiFi.status() != WL_CONNECTED) {
     connectWiFi();
   }
 ```
 - 'if' (WiFi.status() != WL_CONNECTED) { connectWiFi(); } checks if the device is connected to WiFi; if not, it tries to reconnect. By colling this function: connectWiFi(), then it will goes to: 
-```
+``` CPP
 void connectWiFi() {
   WiFi.mode(WIFI_OFF);
   delay(1000);
@@ -441,17 +441,17 @@ void connectWiFi() {
 ```
 This will make it reconnect the wifi if something went wrong. 
 -------------------------------------------------------------
-```
+``` CPP
 Serial.println("Loop started...");
 ```
 - Serial.println("Loop started..."); prints a message indicating that the main loop has started. If it is not printed, this means that the connection to the internet was failed.
 ----------------------------------------------------------------
-```
+``` CPP
 HTTPClient http_S;
 ```
 - HTTPClient http_S; creates an HTTPClient object for making HTTP requests.
 -------------------------------------------------------------------
-```
+``` CPP
 if (http_S.begin(URL_S)) {
     int httpResponseCode_S = http_S.GET();
     // If's statements, but I didn't write it to make the wxplination clear!!
@@ -461,7 +461,7 @@ else {
   }
 ```
 - if (http_S.begin(URL_S)) { initializes the HTTP client with the specified URL. Returns true (non-zero value): If the initialization is successful and the HTTP client is ready to make requests to the URL. This means that the URL is valid, and the HTTP client has been set up correctly. Thus it will go into the follwing if statement
-```
+``` CPP
 if (httpResponseCode_S > 0) {
       String payload_S = http_S.getString();
       Serial.print("Response payload S: ");
@@ -479,9 +479,9 @@ if (httpResponseCode_S > 0) {
 
     http_S.end();
   }
-```
+``` 
 - Returns false (zero value): If there is an issue initializing the HTTP connection. This could happen due to an invalid URL, network issues, or problems setting up the HTTP client. and then will get to the else statement:
-```
+``` CPP
 else {
     Serial.println("Unable to connect to server for URL_S");
   }
@@ -489,7 +489,7 @@ else {
  printing: "Unable to connect to server for URL_S" <br>
  
 - int httpResponseCode_S = http_S.GET(); sends a GET request to the URL and stores the HTTP response code (if it is 200 "2XX" it is succesded and will get into (httpResponseCode_S > 0) if it is something else, then there is an error. and will excute  Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S);
-```
+``` CPP
 if (httpResponseCode_S > 0) {
       String payload_S = http_S.getString();
       Serial.print("Response payload S: ");
@@ -508,7 +508,7 @@ if (httpResponseCode_S > 0) {
 - String payload_S = http_S.getString(); retrieves the response payload as a String, which is here "stop".
 - Serial.print("Response payload S: "); prints a label for the response payload to ensure that the logic of c++ got into this if statement..
 - Serial.println(payload_S); prints the actual response payload to make sure it is "stop" as what we expected.
-```
+``` CPP
 if (payload_S == "stop") {
         Serial.println("Turning on LED Stop");
         digitalWrite(ledPin_S, HIGH);
@@ -518,20 +518,20 @@ if (payload_S == "stop") {
 - if (payload_S == "stop") { checks if the payload matches the string "stop". if it matches it will print: "Turning on LED Stop" this will make use sure that if statement here is excuted and prints a message indicating that the LED will be turned on.
 - digitalWrite(ledPin_S, HIGH); turns on the LED by setting the pin to HIGH.
 - delay(2000); waits for 2 seconds.<br>
-```
+``` CPP
 else {
       Serial.print("Error on HTTP request S: ");
       Serial.println(httpResponseCode_S);
     }
 ```
 - else { Serial.print("Error on HTTP request S: "); Serial.println(httpResponseCode_S); } prints an error message if the HTTP request failed.
-```
+``` CPP
  http_S.end();
 ```
 - http_S.end(); ends the HTTP request and frees resources.
 ------------------------------------------------------------------------------------------------------
 Then it will get out from the if statement of if if (httpResponseCode_S > 0), going to face each of:
-```
+``` CPP
 digitalWrite(ledPin_S, LOW);
 
 delay(500);
@@ -714,7 +714,7 @@ https://github.com/user-attachments/assets/2bacfcbd-50ba-4af2-b697-fa678667e005
 In addition to changing the password as the previous step, here the URL is changed to the IP of my laptob instead of using http host of the smart-methods hosting page which is complicated to create a personal one at this time and since the website is changed to my web page which is localhost that is not hosted in the internet. <br>
 
 to get The IP ->
-```
+``` CPP
 open the cmd -> ipconfig -> IPv4 Address
 ```
 
